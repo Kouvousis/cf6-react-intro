@@ -4,7 +4,8 @@ import ArrowFunctionalComponent from "./components/ArrowFunctionalComponent.tsx"
 import ArrowFunctionalComponentWithProps from "./components/ArrowFunctionalComponentWithProps.tsx";
 import ArrowFunctionalComponentWithPropsType from "./components/ArrowFunctionalComponentWithPropsType.tsx";
 import Layout from "./components/Layout.tsx";
-import FunctionalComponentWithState from "./components/FunctionalComponentWithState.tsx";
+// import FunctionalComponentWithState from "./components/FunctionalComponentWithState.tsx";
+import Counter from "./components/Counter.tsx";
 // import ClassComponentWithState from "./components/ClassComponentWithState.tsx";
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
                     description={"This is a description"}
                 />
                 {/*<ClassComponentWithState/>*/}
-                <FunctionalComponentWithState/>
+                {/*<FunctionalComponentWithState/>*/}
+                <Counter/>
             </Layout>
 
         </>
