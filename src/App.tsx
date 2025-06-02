@@ -7,8 +7,9 @@ import Layout from "./components/Layout.tsx";
 // import Todo from "./components/Todo/Todo.tsx";
 // import FunctionalComponentWithState from "./components/FunctionalComponentWithState.tsx";
 // import Counter from "./components/Counter.tsx";
-import NameChanger from "./components/NameChanger.tsx";
-import {useEffect} from "react";
+// import NameChanger from "./components/NameChanger.tsx";
+// import {useEffect} from "react";
+import OnlineStatus from "./components/OnlineStatus.tsx";
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
 // import CounterWithMoreStates from "./components/CounterWithMoreStates.tsx";
 // import CounterAdvanced from "./components/CounterAdvanced.tsx";
@@ -18,12 +19,14 @@ import {useEffect} from "react";
 // import ClassComponentWithState from "./components/ClassComponentWithState.tsx";
 
 function App() {
-    useEffect(() => {
-        const id: number = setInterval(() => console.log("tick"), 1000)
-        return () => {
-            clearInterval(id)
-        }
-    }, []);    return (
+    // useEffect(() => {
+    //     const id: number = setInterval(() => console.log("tick"), 1000)
+    //     return () => {
+    //         clearInterval(id)
+    //     }
+    // }, []);
+
+    return (
         <>
 
             <Layout>
@@ -38,13 +41,14 @@ function App() {
                 {/*<ClassComponentWithState/>*/}
                 {/*<FunctionalComponentWithState/>*/}
                 {/*<Counter/>*/}
-                <NameChanger/>
+                {/*<NameChanger/>*/}
                 {/*<CounterWithMoreStates/>*/}
                 {/*<CounterAdvanced/>*/}
                 {/*<CounterWithCustomHook/>*/}
                 {/*<CounterWithAdvancedCustomHooks/>*/}
                 {/*<CounterWithReducer/>*/}
                 {/*<Todo/>*/}
+                <OnlineStatus/>
             </Layout>
 
         </>
