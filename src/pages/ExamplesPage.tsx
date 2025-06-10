@@ -8,7 +8,7 @@ const ExamplesPage = () => {
 
     return (
         <>
-            <h1 className="text-2xl font-bold mt-12">Examples</h1>
+            <h1 className="text-2xl font-bold mt-12 ml-4">Examples</h1>
         </>
     )
 }
