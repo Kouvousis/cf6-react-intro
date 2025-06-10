@@ -17,7 +17,7 @@
 // import CounterWithAdvancedCustomHooks from "./components/CounterWithAdvancedCustomHook.tsx";
 // import ClassComponentWithState from "./components/ClassComponentWithState.tsx";
 import {BrowserRouter, Routes, Route} from "react-router";
-import HomePage from "./pages/HomePage.tsx";
+// import HomePage from "./pages/HomePage.tsx";
 import NameChangerPage from "./pages/NameChangerPage.tsx";
 import OnlineStatusPage from "./pages/OnlineStatusPage.tsx";
 import UserPage from "./pages/UserPage.tsx";
@@ -27,6 +27,7 @@ import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
 // import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
 import AdvancedRedirect from "./components/AdvancedRedirect.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
+import FocusInput from "./components/FocusInput.tsx";
 
 function App() {
     // useEffect(() => {
@@ -65,9 +66,9 @@ function App() {
                 <Routes>
                     {/*<Route path="/" element={<HomePage/>}/>*/}
                     <Route element={<RouterLayout/>}>
-                        <Route index element={<HomePage/>}/>
+                        {/*<Route index element={<HomePage/>}/>*/}
+                        <Route index element={<FocusInput/>}/>
                     </Route>
-                    <Route index element={<HomePage/>}/>
                     <Route path="examples" element={<RouterExamplesLayout/>}>
                         <Route index element={<ExamplesPage/>}/>
                         <Route path="name-changer" element={<NameChangerPage/>}></Route>
