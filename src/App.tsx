@@ -24,6 +24,9 @@ import UserPage from "./pages/UserPage.tsx";
 import RouterLayout from "./components/RouterLayout.tsx";
 import ExamplesPage from "./pages/ExamplesPage.tsx";
 import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
+// import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
+import AdvancedRedirect from "./components/AdvancedRedirect.tsx";
+import NotFoundPage from "./pages/NotFoundPage.tsx";
 
 function App() {
     // useEffect(() => {
@@ -69,11 +72,15 @@ function App() {
                         <Route index element={<ExamplesPage/>}/>
                         <Route path="name-changer" element={<NameChangerPage/>}></Route>
                         <Route path="online-status" element={<OnlineStatusPage/>}></Route>
+                        {/*<Route path="auto-redirect" element={<AutoRedirectPage/>}/>*/}
+                        <Route path="auto-redirect" element={<AdvancedRedirect/>}/>
                     </Route>
                     <Route path="users/:userId" element={<UserPage/>}>
                         <Route path="users" element={<UserPage/>}></Route>
                     </Route>
                     {/*<Route path="files/*" element={<FilePage/>}></Route>*/}
+                    {/*must be at the bottom*/}
+                    <Route path="*" element={<NotFoundPage/>}/>
                 </Routes>
                 {/*</Layout>*/}
             </BrowserRouter>
