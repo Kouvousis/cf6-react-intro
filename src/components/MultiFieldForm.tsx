@@ -14,11 +14,11 @@ const initialValues = {
 
 const MultiFieldForm = () => {
     const [values, setValues] = useState<FormValues>(initialValues);
-    const [suibmitedData, setSuibmittedData] = useState<FormValues | null>(null);
+    const [submittedData, setSubmittedData] = useState<FormValues | null>(null);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        setSuibmittedData(values)
+        setSubmittedData(values)
         console.log(values)
         setValues(initialValues);
     }
@@ -36,7 +36,7 @@ const MultiFieldForm = () => {
 
     const handleClear = () => {
         setValues(initialValues);
-        setSuibmittedData(null);
+        setSubmittedData(null);
     }
 
     return (
@@ -86,12 +86,12 @@ const MultiFieldForm = () => {
                         </button>
                     </div>
 
-                    {suibmitedData && (
+                    {submittedData && (
                         <div className="mt-6 border-t pt-4 space-y-2">
                             <h2 className="">Submitted Data</h2>
-                            <p><strong>Name:</strong> {suibmitedData.name}</p>
-                            <p><strong>Email:</strong> {suibmitedData.email}</p>
-                            <p><strong>Message:</strong> {suibmitedData.message}</p>
+                            <p><strong>Name:</strong> {submittedData.name}</p>
+                            <p><strong>Email:</strong> {submittedData.email}</p>
+                            <p><strong>Message:</strong> {submittedData.message}</p>
                         </div>
                     )}
 
