@@ -67,6 +67,7 @@ const MultiFieldForm = () => {
                         className="w-full px-4 py-2 rounded border "
                         placeholder="Type your message"
                         onChange={handleChange}
+                        minLength={5}
                         required
                     >
                 </textarea>
