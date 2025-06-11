@@ -17,18 +17,19 @@
 // import CounterWithAdvancedCustomHooks from "./components/CounterWithAdvancedCustomHook.tsx";
 // import ClassComponentWithState from "./components/ClassComponentWithState.tsx";
 import {BrowserRouter, Routes, Route} from "react-router";
-// import HomePage from "./pages/HomePage.tsx";
+import HomePage from "./pages/HomePage.tsx";
 import NameChangerPage from "./pages/NameChangerPage.tsx";
 import OnlineStatusPage from "./pages/OnlineStatusPage.tsx";
 import UserPage from "./pages/UserPage.tsx";
 import RouterLayout from "./components/RouterLayout.tsx";
-import ExamplesPage from "./pages/ExamplesPage.tsx";
+// import ExamplesPage from "./pages/ExamplesPage.tsx";
 import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
 // import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
 import AdvancedRedirect from "./components/AdvancedRedirect.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 // import FocusInput from "./components/FocusInput.tsx";
 import UncontrolledInput from "./components/UncontrolledInput.tsx";
+import MultiFieldForm from "./components/MultiFieldForm.tsx";
 
 function App() {
     // useEffect(() => {
@@ -65,15 +66,15 @@ function App() {
             <BrowserRouter>
                 {/*<Layout>*/}
                 <Routes>
-                    {/*<Route path="/" element={<HomePage/>}/>*/}
+                    <Route path="/" element={<HomePage/>}/>
                     <Route element={<RouterLayout/>}>
                         {/*<Route index element={<HomePage/>}/>*/}
+                        <Route index element={<MultiFieldForm/>}/>
                         {/*<Route index element={<FocusInput/>}/>*/}
                         <Route index element={<UncontrolledInput/>}/>
-
                     </Route>
                     <Route path="examples" element={<RouterExamplesLayout/>}>
-                        <Route index element={<ExamplesPage/>}/>
+                        {/*<Route index element={<ExamplesPage/>}/>*/}
                         <Route path="name-changer" element={<NameChangerPage/>}></Route>
                         <Route path="online-status" element={<OnlineStatusPage/>}></Route>
                         {/*<Route path="auto-redirect" element={<AutoRedirectPage/>}/>*/}
