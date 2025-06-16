@@ -3,7 +3,10 @@ import {z} from "zod";
 
 const formSchema = z.object(
     {
-        name: z.string().trim().nonempty('Name is required.'),
+        name: z
+            .string()
+            .trim()
+            .nonempty('Name is required.'),
         email: z
             .string()
             .trim()
@@ -36,41 +39,34 @@ const initialValues = {
 const MultiFieldFormWithZodValidation = () => {
     const [values, setValues] = useState<FormValues>(initialValues);
     const [submittedData, setSubmittedData] = useState<FormValues | null>(null);
-    const [errors, setErrors] = useState<FormErrors | null>(null);
+    const [errors, setErrors] = useState<FormErrors>({});
 
-    const validateForm = (values: FormValues): FormErrors => {
-        const errors: FormErrors = {}
+    const validateForm = () => {
+        const result = formSchema.safeParse(values);
 
-        if (!values.name.trim()) {
-            errors.name = "Name is required.";
+        if (!result.success) {
+            const newErrors: FormErrors = {}
+
+            result.error.issues.forEach((issue) => {
+                const fieldName = issue.path[0] as keyof FormValues;
+                newErrors[fieldName] = issue.message;
+            })
+            setErrors(newErrors);
+            return false
         }
-        if (!values.email.trim() ||
-            !/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(values.email)
-        ) {
-
-            errors.email = "Email is required.";
-        }
-        if (!values.message.trim() || values.message.length < 5) {
-            errors.message = "Message is required and must be at least 5 characters.";
-        }
-
-        return errors;
+        setErrors({})
+        return true
     }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        const isValid = validateForm();
 
-        const validationErrors = validateForm(values);
-
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
-            setSubmittedData(null);
-            return;
+        if (isValid) {
+            setSubmittedData(values);
+            setValues(initialValues);
         }
 
-        setSubmittedData(values)
-        setValues(initialValues);
-        setErrors(null);
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -95,7 +91,7 @@ const MultiFieldFormWithZodValidation = () => {
     const handleClear = () => {
         setValues(initialValues);
         setSubmittedData(null);
-        setErrors(null);
+        setErrors({});
     }
 
     return (
