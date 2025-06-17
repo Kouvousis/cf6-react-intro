@@ -8,7 +8,7 @@ const HeaderResponsive = () => {
 
     return (
         <>
-            <header className="bg-[#782024] fixed w-full">
+            <header className="bg-[#782024] fixed w-full z-50">
                 <div className="container mx-auto px-4 flex items-center justify-between">
                     <CodingFactoryLogo/>
 
