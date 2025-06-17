@@ -28,8 +28,24 @@ export async function getProduct(id: number): Promise<Product> {
     return await response.json()
 }
 
-export async function updateProduct(id: number, product: Product): Promise<Product> {
-
+export async function updateProduct(
+    id: number,
+    data: {
+        name: string;
+        slug: string;
+        description?: string | undefined
+        image?: string | undefined
+        price: number;
+        is_active: boolean;
+        is_favorite: boolean;
+        sort: number;
+    }): Promise<Product> {
+    const response = await fetch(`${API_URL}tenants/${TENANT_ID}/products/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(data),
+    })
+    if (!response.ok) throw new Error("Failed to update product.");
+    return await response.json()
 }
 
 export async function deleteProduct(id: number): Promise<void> {
