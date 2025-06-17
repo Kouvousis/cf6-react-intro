@@ -1,18 +1,23 @@
+import z from 'zod'
+
 const API_URL: string = import.meta.env.VITE_API_URL
 const TENANT_ID: string = import.meta.env.VITE_TENANT_ID
 
-export type Product = {
-    id: number;
-    name: string;
-    slug: string;
-    description?: string;
-    image?: string;
-    price: number;
-    is_active: boolean;
-    is_favorite: boolean;
-    sort: number;
-    category_id?: number;
-}
+export const productSchema = z.object({
+    id: z.number().int(),
+    name: z.string().min(1, "Required"),
+    slug: z.string().min(1, "Required")
+        .regex(/^[a-zA-Z0-9_-]+$/, "Slug must use only letters, numbers - or _"),
+    description: z.string().optional(),
+    image: z.string().url("Must be valid url").optional(),
+    price: z.coerce.number().nonnegative("Must be a positive number."),
+    sort: z.coerce.number().int().min(0, "Must be greater than 0"),
+    is_active: z.boolean(),
+    is_favorite: z.string(),
+    category_id: z.coerce.number().int().min(1, "Category is required")
+})
+
+export type Product = z.infer<typeof productSchema>
 
 export async function getProducts(): Promise<Product[]> {
     const response = await fetch(`${API_URL}tenants/${TENANT_ID}/products/`)
